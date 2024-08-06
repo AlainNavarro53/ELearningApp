@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ELearningApp.Models.Course>
+
+@{
+    ViewData["Title"] = "Course List";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New Course</a>
+</p>
+
+<table class="table table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().Title)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.CourseId">Edit</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.CourseId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

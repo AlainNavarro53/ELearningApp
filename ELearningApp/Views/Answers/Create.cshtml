@@ -1,0 +1,46 @@
+﻿@model ELearningApp.Models.AnswerViewModel
+
+@{
+    ViewData["Title"] = "Create Answer";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="Create">
+                    <div class="form-group">
+                        <label asp-for="Content" class="control-label"></label>
+                        <input asp-for="Content" class="form-control" />
+                        <span asp-validation-for="Content" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IsCorrect" class="control-label"></label>
+                        <input asp-for="IsCorrect" class="form-check-input" type="checkbox" />
+                        <span asp-validation-for="IsCorrect" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="QuestionId" class="control-label"></label>
+                        <select asp-for="QuestionId" class="form-control" asp-items="ViewBag.QuestionId"></select>
+                        <span asp-validation-for="QuestionId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-3">
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

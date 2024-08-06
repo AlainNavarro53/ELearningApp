@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ELearningApp.Models.Answer>
+
+@{
+    ViewData["Title"] = "Answers List";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New Answer</a>
+</p>
+
+<table class="table table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().Content)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Question.Content)</th>
+            <th>@Html.DisplayNameFor(model => model.First().IsCorrect)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Content)</td>
+                <td>@Html.DisplayFor(modelItem => item.Question.Content)</td>
+                <td>@Html.DisplayFor(modelItem => item.IsCorrect)</td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.AnswerId">Edit</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.AnswerId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
